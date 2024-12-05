@@ -1,30 +1,40 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:where_am_i/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  group('Widget Tests for Where Am I App', () {
+    // Test to check if the home screen renders correctly
+    testWidgets('Home screen renders correctly', (WidgetTester tester) async {
+      await tester.pumpWidget(MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+      expect(find.text('Africa'), findsOneWidget);
+      expect(find.text('America'), findsOneWidget);
+      expect(find.text('Asia'), findsOneWidget);
+      expect(find.text('Europe'), findsOneWidget);
+      expect(find.byType(ElevatedButton), findsNWidgets(4));
+    });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Reusable function for testing navigation to a specific region
+    void testRegionNavigation(String region) {
+      testWidgets('Navigation to $region screen works',
+          (WidgetTester tester) async {
+        await tester.pumpWidget(MyApp());
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+        // Tap on the region button.
+        await tester.tap(find.text(region));
+        await tester.pumpAndSettle();
+
+        // Verify that the RegionScreen for the selected region is displayed.
+        expect(find.text(region), findsOneWidget);
+        expect(find.text("Your Current Location in $region:"), findsOneWidget);
+      });
+    }
+
+    // Using the reusable test function for each region
+    testRegionNavigation('Africa');
+    testRegionNavigation('Europe');
+    testRegionNavigation('Asia');
+    testRegionNavigation('America');
   });
 }

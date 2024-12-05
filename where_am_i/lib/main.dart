@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
-import 'login_screen.dart'; // Add your login screen
-import 'signup_screen.dart'; // Add your signup screen
-import 'find_me_screen.dart';
-import 'nearby_places_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/asia_screen.dart';
+import 'screens/europe_screen.dart';
+import 'screens/america_screen.dart';
+import 'screens/africa_screen.dart';
 
 void main() {
-  runApp(WhereAmIApp());
+  runApp(MyApp());
 }
 
-class WhereAmIApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Where Am I',
-      initialRoute: '/',
+      title: 'Where Am I?',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: HomeScreen(),
       routes: {
-        '/': (context) => HomeScreen(),
-        '/login': (context) => LoginScreen(), // Define your Login Screen
-        '/signup': (context) => SignUpScreen(), // Define your Sign Up Screen
-        '/findme': (context) => FindMeScreen(),
-        '/nearby': (context) => NearbyPlacesScreen(),
+        '/asia': (context) => AsiaScreen(),
+        '/europe': (context) => EuropeScreen(),
+        '/america': (context) => AmericaScreen(),
+        '/africa': (context) => AfricaScreen(),
       },
     );
   }

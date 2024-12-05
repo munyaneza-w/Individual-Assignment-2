@@ -1,45 +1,26 @@
 name: where_am_i
-description: "A Flutter app to determine the user's location using an API."
+description: A Flutter app that displays your location on a map based on your current region.
 
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' # Remove this line if you're publishing the package.
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-  cupertino_icons: ^1.0.8
-  http: ^0.15.0 # Added for making API requests
+  google_maps_flutter: ^2.2.2
+  geolocator: ^9.0.0
+  http: 1.2.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^4.0.0
-
 flutter:
   uses-material-design: true
 
-  # Adding assets
   assets:
-    - assets/images/app_logo.png
-    - assets/images/home_background.png
-    - assets/images/placeholder_poi.png
-    - assets/icons/find_me_icon.png
-    - assets/icons/nearby_places_icon.png
-    - assets/icons/user_marker.png
+    - assets/  # Optional: only include if you have assets to add
