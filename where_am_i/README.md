@@ -1,16 +1,40 @@
-# where_am_i
+# Where Am I? - Flutter App
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+"Where Am I?" is a simple Flutter application designed to help users find their current geographical location using their device's GPS. The app displays the location on a map and provides an interactive, user-friendly interface to explore different continents.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- **Real-Time Location**: Fetches the user's current GPS location and displays it on a map.
+- **Multiple Screens**: Includes individual screens for different continents (Asia, Africa, Europe, America).
+- **Interactive UI**: Provides an intuitive interface with clear call-to-action buttons for users to easily navigate.
+- **Location Fetching with BLoC**: Utilizes the BLoC pattern for state management and fetching location data asynchronously.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Screens
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Home Screen**: Displays a welcome message and a button to fetch the current location.
+- **Map Screen**: Displays the user's current location on a map (integrating the `geolocator` package for location tracking).
+- **Asia, Africa, Europe, America Screens**: Different screens representing geographical regions where users can explore various information about those continents.
+
+## Technologies Used
+
+- **Flutter**: The primary framework for building the cross-platform application.
+- **flutter_bloc**: For state management using the BLoC (Business Logic Component) pattern.
+- **Geolocator**: For fetching the user's current location via GPS.
+- **Google Maps API**: For displaying the user's location on a map (if integrated).
+
+## Setup and Installation
+
+### Prerequisites
+
+- **Flutter**: Ensure that Flutter is installed on your machine. Follow the [official installation guide](https://flutter.dev/docs/get-started/install) to set it up.
+- **Dart**: Dart is required as the programming language for Flutter projects.
+
+### Installing Dependencies
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/where_am_i.git
+

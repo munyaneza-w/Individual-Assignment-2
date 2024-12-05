@@ -23,11 +23,36 @@ class LocationScreen extends StatelessWidget {
                 ),
               );
             } else if (state is LocationError) {
+              String errorMessage = state.message;
+
+              // Provide more informative error messages based on specific cases
+              if (errorMessage.contains("denied")) {
+                errorMessage =
+                    "Location permission denied. Please enable it in your settings.";
+              } else if (errorMessage.contains("service")) {
+                errorMessage =
+                    "Location services are disabled. Please turn them on.";
+              }
+
               return Center(
-                  child: Text(
-                state.message,
-                style: TextStyle(color: Colors.red),
-              ));
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      errorMessage,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Retry fetching location when button is pressed
+                        context.read<LocationBloc>().add(FetchLocation());
+                      },
+                      child: Text('Try Again'),
+                    ),
+                  ],
+                ),
+              );
             }
             return Center(child: Text('Press the button to get location.'));
           },

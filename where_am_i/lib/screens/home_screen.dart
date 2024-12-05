@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'bloc/location_bloc.dart';
+import 'bloc/location_event.dart';
+import 'bloc/location_state.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -40,7 +44,8 @@ class HomeScreen extends StatelessWidget {
               // Button to navigate
               ElevatedButton(
                 onPressed: () {
-                  // Navigate to the map screen (MapScreen should be defined)
+                  // Trigger fetching the location and navigate to the map screen
+                  context.read<LocationBloc>().add(FetchLocation());
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => MapScreen()),
@@ -60,7 +65,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-// Define the MapScreen (for demonstration purposes)
 class MapScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -68,8 +72,22 @@ class MapScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Map Screen'),
       ),
-      body: Center(
-        child: Text('Map will be displayed here'),
+      body: BlocBuilder<LocationBloc, LocationState>(
+        builder: (context, state) {
+          if (state is LocationLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is LocationLoaded) {
+            return Center(
+              child: Text(
+                'Location: ${state.position.latitude}, ${state.position.longitude}',
+                style: TextStyle(fontSize: 18),
+              ),
+            );
+          } else if (state is LocationError) {
+            return Center(child: Text('Error: ${state.message}'));
+          }
+          return Center(child: Text('Fetching location...'));
+        },
       ),
     );
   }
