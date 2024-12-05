@@ -28,13 +28,15 @@
 
 ### Prerequisites
 
-- **Flutter**: Ensure that Flutter is installed on your machine. Follow the [official installation guide](https://flutter.dev/docs/get-started/install) to set it up.
-- **Dart**: Dart is required as the programming language for Flutter projects.
+- **Flutter**: I used flutter to create this app from scratch
+- **Dart**: Dart was required as the programming language to create this Flutter project.
 
 ### Installing Dependencies
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/where_am_i.git
+   git clone https://github.com/munyaneza-w/Individual-Assignment-2.git
 
+## Author
+Wilson MUNYANEZA-ALU Student.
